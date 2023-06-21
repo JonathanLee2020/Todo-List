@@ -5,8 +5,8 @@
     //the way we actually make our code appear is by targeting an element on the HTML with the queryselector and then changing its innerHTML
 //we need a function that removes a specific element from our todo list
 
-let insertHere = document.querySelector(".list")
-console.log(`our list is ${insertHere}`)
+let list = document.querySelector(".list")
+console.log(`our list is ${list}`)
 
 const global = [
 
@@ -20,16 +20,26 @@ const global = [
     }
 ];
 
+console.log(`we are about to make some big changes gamer`)
 
-function renderTasks () {
-    global.map((element) => {
-        element.innerHTML = `
-        <div>
-            <li>the gamers are gaming</li>
-            <button>delete</button>
+list.innerHTML = global.map((element) => {
+    return (
+        `<div>
+            <li>${element.task}
+            <button class="todo__delete">x</button>
+            </li>
         </div>`
+    )
+}).join("")
+
+function addTask () {
+    global.push({
+        id: Math.floor(Math.random() * 1000000)
     })
 }
+
+
+
 
 
 
