@@ -6,7 +6,6 @@
 //we need a function that removes a specific element from our todo list
 
 let list = document.querySelector(".list")
-console.log(`our list is ${list}`)
 
 const global = [
 
@@ -20,7 +19,10 @@ const global = [
     }
 ];
 
-console.log(`we are about to make some big changes gamer`)
+function newTaskDetected(event) {
+    newTaskText = event.target.value
+    console.log(`our input is ${newTaskText}`)
+}
 
 list.innerHTML = global.map((element) => {
     return (
@@ -34,7 +36,8 @@ list.innerHTML = global.map((element) => {
 
 function addTask () {
     global.push({
-        id: Math.floor(Math.random() * 1000000)
+        id: Math.floor(Math.random() * 1000000),
+        task: ""
     })
 }
 
@@ -46,11 +49,5 @@ function addTask () {
 
 let newTaskText = "";
 
-function newTaskDetected(event) {
-    newTaskText = event.target.value
-    console.log(`our nTT is ${newTaskText}`)
-}
 
-function addTask(event) {
 
-}
