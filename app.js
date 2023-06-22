@@ -11,34 +11,39 @@ const global = [
 
     {
         id: 1,
-        task: "eat durant"
+        task: "Finish Frontend Simplified"
     }, 
-    {
-        id: 2,
-        task: "win championship"
-    }
 ];
+
+let newTaskText = "";
 
 function newTaskDetected(event) {
     newTaskText = event.target.value
-    console.log(`our input is ${newTaskText}`)
+    console.log(`onchange becomes ${newTaskText}`)
 }
 
-list.innerHTML = global.map((element) => {
+
+function renderTasks(element) {
+    list.innerHTML = global.map((element) => {
     return (
         `<div>
             <li>${element.task}
             <button class="todo__delete">x</button>
             </li>
         </div>`
-    )
-}).join("")
+        )
+    }).join("")
+}
+
 
 function addTask () {
+    console.log(`we are about to add a task`)
     global.push({
-        id: Math.floor(Math.random() * 1000000),
-        task: ""
+        id: global.length + 1,
+        task: `${newTaskText}`
     })
+    console.log(`our now id is ${global[global.length - 1].id}`)
+    renderTasks();
 }
 
 
@@ -47,7 +52,6 @@ function addTask () {
 
 
 
-let newTaskText = "";
 
 
 
