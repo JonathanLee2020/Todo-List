@@ -14,14 +14,14 @@
   <div id="todo">
     <div class="row">
       <h1>Bankia Gaming</h1>
-      <div class="todo__input">
-        <input type="text" placeholder = "add a task" onchange=newTaskDetected(event)>
-        <button class="todo__add" onclick=addTask() >Adding</button>
+      <div class="todo__input" onchange=getInputText(event)>
+        <input type="text" >
+        <button onclick=addTask()>Adding</button>
       </div>
       <ul class="list">
         <li>
           Finish Frontend Simplified
-          <button class="todo__delete">
+          <button class="todo__delete" onclick=removeTask(id)>
             x
           </button>
         </li>
