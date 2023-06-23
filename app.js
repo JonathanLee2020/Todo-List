@@ -33,12 +33,21 @@ function renderTasks() {
 }
 
 function addTask () {
+    const taskInput = document.getElementById("taskInput");
+    const errorText = document.getElementById("errorText");
+    if (!taskInput.value.length) {
+      errorText.style.display = "block"; // Display the error message
+      return; // Stop the function execution if the input is empty
+    }
     let newTask = {
         id: tasks.length + 1,
         text: `${taskText}`
     }
     tasks.push(newTask);
     renderTasks()
+    taskText = "";
+    taskInput.value = ""; // Clear the input field
+    errorText.style.display = "none"; // Hide the error message
 }
 
 function removeTask (id) {
