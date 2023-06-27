@@ -20,6 +20,8 @@ function getInput(event) {
 }
 
 const HTMLTasks = document.querySelector(".list")
+<button class="todo__delete" onclick=deleteTask(${element.id})>
+
 function renderTasks() {
     HTMLTasks.innerHTML = taskArr.map((element) => {
         return (

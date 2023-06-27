@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <script src="part3.js" defer></script>
 </head>
 
 <body>
@@ -16,17 +16,17 @@
       <h1>Todo List</h1>
       <div class="todo__input" >
         <input type="text" id="taskInput" onchange=getInput(event)>
-        <button onclick=addTask()>Adding</button>
+        <button >Adding</button>
       </div>
       <ul class="list">
-        <li>
+        <li clas="task">
           Finish Frontend Simplified
           <button class="todo__delete">
             x
           </button>
         </li>
       </ul>
-      <p id="errorText" style="color: red; display: none;">Please enter a task.</p>
+      <!-- <p id="errorText" style="color: red; display: none;">Please enter a task.</p> -->
     </div>
   </div>
 </body>
