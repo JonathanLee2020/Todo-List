@@ -1,54 +1,40 @@
-// we need an array taskArr to constantly regenerate with our updated todo list
-// we need to grab the elemet we are storing hte list in, and when we regenerate our tasksArr we update the innerHTML of our list
-// we need a function that renders our array for convenience sakes
-// we need a function that adds a new task to the end taskArr 
-    // our addTasks arr must grab the user's typed input
-// we needa  fucntion that removes a task from any point in our taskArr
+// we have an addTask function that 
+    // takes our typed input
+    // uses it to create a new listNode
+    // appends that listNode to the list
+// we have a removeTask function that
+    // registers the ndoe we are clicking
+    // removes it from the DOM
 
-let taskArr = [
-    {
-        id: 1,
-        text: "tester",
+let $input = document.querySelector("input") 
+const $list = document.querySelector(".list")
+const button = document.querySelector("button")
+button.addEventListener("click", () => addTask($input.value))
+
+
+function addTask(task) {
+    if (!task.length) {
+        alert("please type the task you wish to add")
+        return
     }
-]
-
-let newTaskText = ""
-
-function getInput(event) {
-    newTaskText = event.target.value
-    console.log(`our input text is ${newTaskText}`)
+    const $newTask = document.createElement("li")
+    const $taskText = document.createElement("span")
+    $taskText.textContent = task
+    $newTask.appendChild($taskText)
+    const $remove = document.createElement("button")
+    $remove.textContent = "Delete"
+    $newTask.appendChild($remove)
+    $list.appendChild($newTask)
+    $input.value = ""
 }
 
-const HTMLTasks = document.querySelector(".list")
-<button class="todo__delete" onclick=deleteTask(${element.id})>
+$list.addEventListener("click", (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        removeTask(event.target.parentNode)
+    }
+})
 
-function renderTasks() {
-    HTMLTasks.innerHTML = taskArr.map((element) => {
-        return (
-            `        
-            <li>
-                ${element.text}
-                <button class="todo__delete" onclick=deleteTask(${element.id})>
-                x
-                </button>
-            </li>`
-        )
-    }).join("")
-}
-
-function addTask () {
-    taskArr.push(
-        {
-        id: taskArr.length + 1,
-        text: `${newTaskText}`
-        }
-    )
-    renderTasks()
-}
-
-function deleteTask(id) {
-    taskArr = taskArr.filter((element) => {
-        if (element.id !== id) return element
-    })
-    renderTasks()
+function removeTask($itemEl) {
+    console.log(`our param is of type ${$itemEl.tagName}, the parent is of type ${$itemEl.parentNode.tagName}`)
+    $itemEl.parentNode.removeChild($itemEl);
 }
